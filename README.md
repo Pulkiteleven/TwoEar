@@ -1,6 +1,6 @@
-# leloo
+# TwoEar
 
-A new Flutter project.
+This is an Ecommerce app created with flutter.
 
 ## Getting Started
 
