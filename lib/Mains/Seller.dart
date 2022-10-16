@@ -169,37 +169,6 @@ class _SellerState extends State<Seller> {
                     ),
 
                     SizedBox(height: 15.0,),
-                    TextFormField(
-                        minLines: 1,
-                        keyboardType: TextInputType.number,
-                        style: TextStyle(
-                            color: textLight, fontSize: 20.0, fontFamily: 'mons'),
-                        decoration: InputDecoration(
-                          hintText: "Price",
-                          // labelText: "Add Title",
-                          labelStyle: TextStyle(
-                            color: textLight,
-                            fontFamily: 'mons',
-                            fontSize: 20.0,
-                          ),
-                          errorStyle: TextStyle(
-                            color: errorColor,
-                            fontFamily: 'mons',
-                            fontSize: 15.0,
-                          ),
-                        ),
-                        onChanged: (text) {
-                          price = int.parse(text);
-                          print(text);
-                        },
-
-                        validator: (value) {
-                          if (value!.isEmpty || value == null) {
-                            return ("Please Enter a Price");
-                          }
-                        }
-                    ),
-
 
                     SizedBox(height: 15.0,),
 

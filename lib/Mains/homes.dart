@@ -50,8 +50,8 @@ class _homesState extends State<homes> {
         bg: mainYellow,
         text: textColor);
     var d = carousalItems(
-        title: "Star Wars",
-        subTitle: "I am on the high Ground",
+        title: "The best Thing you can Find here",
+        subTitle: "Everything is best",
         bg: textColor,
         text: mainYellow);
 
