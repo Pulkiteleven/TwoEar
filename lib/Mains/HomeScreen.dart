@@ -62,61 +62,98 @@ class _homeScreenState extends State<homeScreen> {
     ];
   }
 
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        titleTextStyle: TextStyle(
+          fontFamily: 'mons',
+          fontSize: 15.0,
+          color: textColor
+        ),
+        contentTextStyle: TextStyle(
+            fontFamily: 'mons',
+            fontSize: 13.0,
+            color: textColor
+        ),
+        alignment: Alignment.bottomCenter,
+        backgroundColor: mainYellow,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0)
+        ),
+        title: new Text('Are you sure?'),
+        content: new Text('Do you want to exit an App'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No',style: TextStyle(color: Colors.white,fontFamily: 'mons'),),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes',style: TextStyle(color: Colors.white,fontFamily: 'mons'),),
+          ),
+        ],
+      ),
+    )) ?? false;
+  }
 
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        key: _key,
-        backgroundColor: Colors.white,
-        drawer: navigationDrawer(
-          allData: widget.allData,
-        ),
-        appBar:AppBar(
-          backgroundColor: mainYellow,
-          elevation: 0,
-        ),
-        bottomNavigationBar: FlashyTabBar(
+      home: WillPopScope(
+        onWillPop: _onWillPop,
+        child: Scaffold(
+          key: _key,
           backgroundColor: Colors.white,
-          onItemSelected: (int val) => setState(() => currentIndex = val),
-          selectedIndex: currentIndex,
-          items: [
-            FlashyTabBarItem(
-              icon: Icon(
-                Icons.home,
-                color: mainYellow,
+          drawer: navigationDrawer(
+            allData: widget.allData,
+          ),
+          appBar:AppBar(
+            backgroundColor: mainYellow,
+            elevation: 0,
+          ),
+          bottomNavigationBar: FlashyTabBar(
+            backgroundColor: Colors.white,
+            onItemSelected: (int val) => setState(() => currentIndex = val),
+            selectedIndex: currentIndex,
+            items: [
+              FlashyTabBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color: mainYellow,
+                ),
+                title:
+                mainText("Home", mainYellow, 15.0, FontWeight.normal, 1),
               ),
-              title:
-              mainText("Home", mainYellow, 15.0, FontWeight.normal, 1),
-            ),
-            FlashyTabBarItem(
-              icon: Icon(
-                Icons.category,
-                color: mainYellow,
+              FlashyTabBarItem(
+                icon: Icon(
+                  Icons.category,
+                  color: mainYellow,
+                ),
+                title: mainText(
+                    "Categories", mainYellow, 15.0, FontWeight.normal, 1),
               ),
-              title: mainText(
-                  "Categories", mainYellow, 15.0, FontWeight.normal, 1),
-            ),
-            FlashyTabBarItem(
-              icon: Icon(
-                Icons.shopping_bag_outlined,
-                color: mainYellow,
+              FlashyTabBarItem(
+                icon: Icon(
+                  Icons.shopping_bag_outlined,
+                  color: mainYellow,
+                ),
+                title: mainText(
+                    "Cart", mainYellow, 15.0, FontWeight.normal, 1),
               ),
-              title: mainText(
-                  "Cart", mainYellow, 15.0, FontWeight.normal, 1),
-            ),
-            FlashyTabBarItem(
-              icon: Icon(
-                Icons.account_circle,
-                color: mainYellow,
+              FlashyTabBarItem(
+                icon: Icon(
+                  Icons.account_circle,
+                  color: mainYellow,
+                ),
+                title: mainText(
+                    "Profile", mainYellow, 15.0, FontWeight.normal, 1),
               ),
-              title: mainText(
-                  "Profile", mainYellow, 15.0, FontWeight.normal, 1),
-            ),
-          ],
+            ],
+          ),
+          body: bottomItems.elementAt(currentIndex),
         ),
-        body: bottomItems.elementAt(currentIndex),
       ),
     );
   }
