@@ -11,6 +11,7 @@ Color textLight = Color(0xFF5E5E5E);
 Color errorColor = Color(0xFFFF0051);
 Color transparent_overlay = Color(0xFFFFFF);
 Color lightYellow = Color(0xFFFFB47D);
+Color lightYellow2 = Color(0xFFFFC47D);
 
 Color itemColor = Color(0xFFDEDEDE);
 
