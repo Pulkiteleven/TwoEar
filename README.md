@@ -1,6 +1,7 @@
 # TwoEar
 
 This is an Ecommerce app created with flutter.
+The backend used in this app is firebase- firestore.
 
 ## Getting Started
 
